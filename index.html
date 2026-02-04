@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+  font-family:Poppins,sans-serif;
+  background: radial-gradient(circle at top, #2a003f, #0a0014);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  overflow:hidden;
+}
+
+.card {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(12px);
+  border-radius:20px;
+  padding:30px;
+  width:95%;
+  max-width:380px;
+  text-align:center;
+  box-shadow:0 0 40px #ff00ff55, 0 0 80px #8a2be244;
+}
+
+h2 {
+  color:#ff8cff;
+  text-shadow:0 0 12px #ff00ff;
+}
+
+button {
+  margin-top:15px;
+  padding:12px 20px;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  cursor:pointer;
+  background:linear-gradient(45deg,#ff00ff,#8a2be2);
+  color:white;
+  box-shadow:0 0 18px #ff00ff;
+}
+
+input {
+  width:90%;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  margin-top:10px;
+  text-align:center;
+  font-size:15px;
+}
+
+.hidden {display:none;}
+
+#out{
+ margin-top:18px;
+ font-size:18px;
+ text-shadow:0 0 10px #ff00ff;
+}
+
+.confetti {
+  position:fixed;
+  width:8px;
+  height:14px;
+  top:-20px;
+  animation:fall linear forwards;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(360deg); }
+}
+
+.balloon{
+ position:fixed;
+ bottom:-60px;
+ font-size:28px;
+ animation:rise 8s linear infinite;
+ opacity:.9;
+}
+
+@keyframes rise{
+ to{ transform:translateY(-120vh); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>🎀 Hey Cutie 🎀</h2>
+  <p>Tap for your surprise</p>
+  <button onclick="showForm()">Tap for Surprise</button>
+
+  <div id="form" class="hidden">
+    <input id="name" placeholder="Enter Name">
+    <input id="day" type="number" placeholder="Date">
+    <input id="month" type="number" placeholder="Month">
+    <button onclick="checkBirthday()">Submit</button>
+  </div>
+
+  <div id="out"></div>
+</div>
+
+<script>
+function showForm(){
+ document.getElementById("form").classList.remove("hidden");
+}
+
+// date → custom message map
+
+const messages = {
+"11-1":`Happy Birthday Brother 💙
+You always stand like a shield for us.
+Stay strong and keep winning.
+Family is lucky to have you.`,
+
+"19-2":`Happy Birthday Bestie 🎉
+Har secret aur har laugh tumhare saath best hota hai.
+Never change your crazy vibe.
+Best friends forever — no upgrade needed.`,
+
+"14-3":`Happy Birthday Mom 🌸
+Aap meri biggest blessing ho.
+Har dua aur har strength aapse hi mili.
+Love you more than words.`,
+
+"29-4":`Happy Birthday Me 😄
+Main limited edition hoon.
+Dream big, shine louder.
+This year = next level glow.`,
+
+"19-6":`Happy Birthday Sis 💜
+Built-in best friend for life.
+Fights bhi, love bhi unlimited.
+Always on my team.`,
+
+"24-6":`Happy Birthday Bestest Cousin 🎀
+Family by blood, friend by heart.
+Har gathering tumse bright hoti hai.
+Stay awesome always.`,
+
+"7-7":`Happy Birthday Dad ⭐
+Real life superhero ho aap.
+Silent support, biggest power.
+Respect always.`,
+
+"17-9":`Happy Birthday You 😉🌹
+Some people are just different.
+You’re one of those rare vibes.
+Stay unforgettable.`,
+
+"17-11":`Happy Birthday Mussarat Anni 🌺
+Grace, warmth, and kindness.
+You bring calm wherever you go.
+Stay blessed always.`
+};
+
+
+function checkBirthday(){
+
+ const name = document.getElementById("name").value || "Friend";
+ const d = document.getElementById("day").value;
+ const m = document.getElementById("month").value;
+ const key = `${d}-${m}`;
+
+ const out = document.getElementById("out");
+
+ if(messages[key]){
+   out.innerHTML = `🎉 Happy Birthday ${name}!<br>${messages[key]}`;
+   out.innerHTML = `🎉 Happy Birthday ${name}!<br>${messages[key].replace(/\n/g,"<br>")}`;
+
+   launchConfetti();
+   
+ } else {
+   out.innerHTML = `💜 ${name}, you are special — have a magical day!`;
+ }
+}
+
+function launchConfetti(){
+ for(let i=0;i<100;i++){
+  const c=document.createElement("div");
+  c.className="confetti";
+  c.style.left=Math.random()*100+"vw";
+  c.style.background=`hsl(${Math.random()*360},100%,60%)`;
+  c.style.animationDuration=(Math.random()*3+2)+"s";
+  document.body.appendChild(c);
+  setTimeout(()=>c.remove(),5000);
+ }
+}
+
+// floating balloons
+const balloons=["🎈","🎈","🎀","💖","✨"];
+setInterval(()=>{
+ const b=document.createElement("div");
+ b.className="balloon";
+ b.innerText=balloons[Math.floor(Math.random()*balloons.length)];
+ b.style.left=Math.random()*100+"vw";
+ b.style.animationDuration=(6+Math.random()*4)+"s";
+ document.body.appendChild(b);
+ setTimeout(()=>b.remove(),9000);
+},800);
+</script>
+
+</body>
+</html>
