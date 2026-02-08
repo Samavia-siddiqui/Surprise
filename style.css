@@ -1,0 +1,134 @@
+body {
+  margin:0;
+  font-family:Poppins,sans-serif;
+  background: radial-gradient(circle at top, #2a003f, #0a0014);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+overflow:auto;
+padding:20px 0;
+
+}
+
+.card {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(12px);
+  border-radius:20px;
+  padding:30px;
+  width:95%;
+  max-width:380px;
+  text-align:center;
+  box-shadow:0 0 40px #ff00ff55, 0 0 80px #8a2be244;
+  max-height: 90vh;
+overflow-y: auto;
+
+}
+
+h2 {
+  color:#ff8cff;
+  text-shadow:0 0 12px #ff00ff;
+}
+
+button {
+  margin-top:15px;
+  padding:12px 20px;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  cursor:pointer;
+  background:linear-gradient(45deg,#ff00ff,#8a2be2);
+  color:white;
+  box-shadow:0 0 18px #ff00ff;
+}
+
+input {
+  width:90%;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  margin-top:10px;
+  text-align:center;
+  font-size:15px;
+}
+
+.hidden {display:none;}
+
+ #out{
+  margin-top:18px;
+  font-size:18px;
+  text-shadow:0 0 10px #ff00ff;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+
+
+.confetti {
+  position:fixed;
+  width:8px;
+  height:14px;
+  top:-20px;
+  animation:fall linear forwards;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(360deg); }
+}
+
+.balloon{
+ position:fixed;
+ bottom:-60px;
+ font-size:28px;
+ animation:rise 8s linear infinite;
+ opacity:.9;
+}
+
+@keyframes rise{
+ to{ transform:translateY(-120vh); }
+}
+button {
+  margin-top:15px;
+  padding:12px 20px;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  cursor:pointer;
+  background:linear-gradient(45deg,#ff0095,#8a2be2);
+  color:white;
+  box-shadow:0 0 18px #c4055ea4;
+  transition: all .25s ease;
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow:0 0 28px #85055a, 0 0 50px #e72697;
+  filter: brightness(1.15);
+}
+
+button:active {
+  transform: translateY(0) scale(.98);
+}
+input {
+  width:90%;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  margin-top:10px;
+  text-align:center;
+  font-size:15px;
+  transition: all .25s ease;
+}
+
+input:hover {
+  box-shadow:0 0 12px #a510a5;
+  transform: scale(1.02);
+}
+
+input:focus {
+  outline:none;
+  box-shadow:0 0 18px #720472, 0 0 30px #da199a;
+  transform: scale(1.03);
+}
+
